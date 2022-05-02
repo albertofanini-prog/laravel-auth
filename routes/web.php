@@ -19,4 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+//Funzione per raggruppare le rotte
+    //Applicare cose comuni
+    //Prefix assegna un prefisso comune alle rotte
+Route::prefix('admin')->group(function(){
+
+    Route::get('home', 'HomeController@index')->name('home');
+
+    //Resource posts
+    //Ecc
+    Route::get('contact', 'HomeController@index');
+
+});
