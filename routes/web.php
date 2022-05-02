@@ -21,15 +21,19 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Funzione per raggruppare le rotte
-    //Applicare cose comuni
+//Funzione per raggruppare le rotte, applicare cose comuni
+    //Middleware: autentica
+    //Namespace: cartella in cui deve essere creato controller e collegata la route
+    //Name: aggiunge prefisso a name su route:list
     //Prefix assegna un prefisso comune alle rotte
-Route::prefix('admin')->group(function(){
+Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
 
     Route::get('home', 'HomeController@index')->name('home');
 
     //Resource posts
     //Ecc
-    Route::get('contact', 'HomeController@index');
+    Route::get('contact', 'HomeController@index')->name('contact');;
 
 });
+
+// Route::get('home', 'HomeController@index')->name('home');
