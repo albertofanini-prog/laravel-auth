@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,11 @@ Auth::routes();
     //Prefix assegna un prefisso comune alle rotte
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
 
-    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     //Resource posts
     //Ecc
-    Route::get('contact', 'HomeController@index')->name('contact');;
+    Route::resource('posts', 'PostController');
 
 });
 
